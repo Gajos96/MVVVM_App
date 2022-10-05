@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="MVVVM_App.Controller.UserViewersDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVVM_App.Controller"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Border BorderBrush="Gray" BorderThickness="1"/>
+
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HasSelectedUserViewer}" Value="False">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <TextBlock FontSize="22" Text="Please select user to see their details" Grid.Row="0" Padding="20" TextWrapping="WrapWithOverflow"/>
+        </Grid>
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HasSelectedUserViewer}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock FontSize="30" Text="{Binding UserName}" Grid.Row="0" Padding="20"/>
+
+            <TextBlock FontSize="15" Text="Email" Grid.Row="1" Padding="20"/>
+            <TextBlock FontSize="15" Text="{Binding Email}" Grid.Row="1" Grid.Column="1" Padding="20"/>
+
+            <TextBlock FontSize="15" Text="Age" Grid.Row="2" Padding="20"/>
+            <TextBlock FontSize="15" Text="{Binding Age}" Grid.Row="2" Grid.Column="1" Padding="20"/>
+
+            <TextBlock FontSize="15" Text="After the wedding" Grid.Row="3" Padding="20"/>
+            <TextBlock FontSize="15" Text="{Binding IsWedding}" Grid.Row="3" Grid.Column="1" Padding="20">
+            </TextBlock>
+        </Grid>
+    </Grid>
+    <!--#endregion-->
+</UserControl>
