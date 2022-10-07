@@ -10,17 +10,26 @@ namespace MVVVM_App
     public partial class App : Application
     {
         private readonly SelectedUserViewerStore selectedUserViewerStore;
-
+        private readonly NavigationStore _navigationStore;
+        private readonly UserStore _userStore;
         public App()
         {
-            selectedUserViewerStore = new SelectedUserViewerStore();
+            _navigationStore = new NavigationStore();
+            _userStore = new UserStore();   
+            selectedUserViewerStore = new SelectedUserViewerStore(_userStore);
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            UserListVM userListVM = new UserListVM
+                (
+                selectedUserViewerStore,
+                _navigationStore,
+                _userStore
+                );
             MainWindow = new MainWindow()
             {
-                DataContext = new UserListVM(selectedUserViewerStore)
+                DataContext = new MainViewModel(_navigationStore, userListVM)
             };
             MainWindow.Show();
             base.OnStartup(e);

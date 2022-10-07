@@ -9,7 +9,7 @@
              xmlns:vm="clr-namespace:MVVVM_App.ViewModel"
              d:DesignHeight="450" d:DesignWidth="800">
     
-<Grid Background="White">
+<Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>

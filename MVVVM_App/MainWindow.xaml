@@ -4,15 +4,29 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MVVVM_App"
+        xmlns:modal="clr-namespace:ModalControl;assembly=ModalControl"
         xmlns:view="clr-namespace:MVVVM_App.View"
+        xmlns:mv="clr-namespace:MVVVM_App.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type mv:AddUserVM}">
+            <view:AddUserView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type mv:EditUserVM}">
+            <view:EditUserView/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-<!--<view:UserListView/>-->
-        <Border Margin="4" Width="400">
-            <view:AddUserView />
-        </Border>
-            
+        <modal:Modal Panel.ZIndex="1" IsOpen="{Binding IsOpen}">
+            <Border CornerRadius="15" Width="450" Height="300" Background="White" BorderBrush="Black" BorderThickness="0.5">
+                <ContentControl Content="{Binding CurrentForm}" />
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="10" Color="Gray"/>
+                </Border.Effect>
+            </Border>
+        </modal:Modal>
+        <view:UserListView DataContext="{Binding _userListVM}"/>
 
     </Grid>
 </Window>

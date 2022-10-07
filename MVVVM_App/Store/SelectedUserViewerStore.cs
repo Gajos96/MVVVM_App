@@ -9,7 +9,24 @@ namespace MVVVM_App.Store
 {
     public class SelectedUserViewerStore
     {
+        private readonly UserStore _storeUser;
+
         private UserViewerModel _selectedUser;
+
+        public SelectedUserViewerStore(UserStore storeUser)
+        {
+            _storeUser = storeUser;
+            _storeUser.UpdateUser += _storeUser_UpdateUserChange;
+        }
+
+        private void _storeUser_UpdateUserChange(UserViewerModel obj)
+        {
+            if(obj.UserId == SelectedUser?.UserId)
+            {
+                SelectedUser = obj; 
+            }
+        }
+
         public UserViewerModel SelectedUser
         {
             get { return _selectedUser; }
@@ -18,11 +35,10 @@ namespace MVVVM_App.Store
                 //Event bierze pod uwage jakokolweik zmiane
                 _selectedUser = value;
                 //Po wywołaniu OnProportychange pamietaj
-                SelectedUserViewerChanged?.Invoke();
+                SelectedUserViewerChanged?.Invoke(); 
             }
 
         }
-
         public event Action SelectedUserViewerChanged;
     }
 }

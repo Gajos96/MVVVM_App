@@ -13,7 +13,7 @@ namespace MVVVM_App.ViewModel
         public ICommand SubmitCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public bool CanSubmit => !string.IsNullOrEmpty(Username);
+        public bool CanSubmit => !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Age);
 
         private string _username;
         public string Username
@@ -40,6 +40,7 @@ namespace MVVVM_App.ViewModel
             {
                 _email = value;
                 OnPropertyChanged(nameof(Email));
+                OnPropertyChanged(nameof(CanSubmit));
             }
         }
 
@@ -54,24 +55,27 @@ namespace MVVVM_App.ViewModel
             {
                 _age = value;
                 OnPropertyChanged(nameof(Age));
+                OnPropertyChanged(nameof(CanSubmit));
             }
         }
 
         private bool _selectYesNo;
-        public string SelectYesNo
+        public bool SelectYesNo
         {
-            get
-            {
-                if (_selectYesNo == true) return "Yes";
-                else return "No";   
-            }
+            get{return _selectYesNo;}
             set
             {
-                if (value == "Yes") _selectYesNo = true; else _selectYesNo = false;
+                _selectYesNo = value;
                 OnPropertyChanged(nameof(SelectYesNo));
+                OnPropertyChanged(nameof(CanSubmit));
             }
         }
 
+        public UserViewerDeatailsFormVM(ICommand submitCommand, ICommand cancelCommand)
+        {
+            SubmitCommand = submitCommand;
+            CancelCommand = cancelCommand;
+        }
 
 
     }

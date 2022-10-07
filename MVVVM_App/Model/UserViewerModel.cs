@@ -8,12 +8,14 @@ namespace MVVVM_App.Model
 {
     public class UserViewerModel
     {
+        public Guid UserId { get; }
         public string UserName { get; }
         public string Email { get; }
         public string Age { get; }
         public bool IsWedding { get; }
-        public UserViewerModel(string userName, string email, string age, bool isWedding)
+        public UserViewerModel(Guid Id,string userName, string email, string age, bool isWedding)
         {
+            UserId = Id;
             UserName = userName;
             Email = email;
             Age = age;

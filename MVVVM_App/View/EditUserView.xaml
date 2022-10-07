@@ -4,48 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MVVVM_App.View"
+             xmlns:con="clr-namespace:MVVVM_App.Controller"
+             xmlns:xm="clr-namespace:MVVVM_App.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="400">
     <Grid Background="Transparent">
-        <Border BorderBrush="Black" BorderThickness="3" Margin="5" Background="White" CornerRadius="15">
-            <Grid >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="40"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.6*"/>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="0.5*"/>
-                </Grid.RowDefinitions>
-                <TextBlock  Text="Edit User:" Padding="10" FontSize="25" FontWeight="Bold" Grid.ColumnSpan="99"/>
-                <TextBlock FontWeight="DemiBold" Text="User Name :" Grid.Row="1" VerticalAlignment="Center" Margin="20 0 0 0" FontSize="10" HorizontalAlignment="Right"/>
-                <TextBox Grid.Row="1" Grid.Column="2" Height="20" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="0 0 20 0" Text="{Binding UserName}" />
-
-                <TextBlock FontWeight="DemiBold" Text="Email :" Grid.Row="2" VerticalAlignment="Center" Margin="20 0 0 0" FontSize="10" HorizontalAlignment="Right"/>
-                <TextBox Grid.Row="2" Grid.Column="2" Height="20" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="0 0 20 0" Text="{Binding Email}" />
-
-                <TextBlock FontWeight="DemiBold" Text="Age :" Grid.Row="3" VerticalAlignment="Center" Margin="20 0 0 0" FontSize="10" HorizontalAlignment="Right"/>
-                <TextBox Grid.Row="3" Grid.Column="2" Height="20" VerticalContentAlignment="Center" VerticalAlignment="Center" Margin="0 0 20 0" Text="{Binding Age}" />
-
-                <TextBlock FontWeight="DemiBold" Text="Are you wedding ?" Grid.Row="4" VerticalAlignment="Center" Margin="20 0 0 0" FontSize="10" HorizontalAlignment="Right"/>
-                <ComboBox Grid.Row="4" Grid.Column="2" MinHeight="15" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 20 0" Width="100" SelectedItem="{Binding SelectYesNo}">
-                    <ComboBoxItem>Yes</ComboBoxItem>
-                    <ComboBoxItem>No</ComboBoxItem>
-                </ComboBox>
-                <Border Grid.ColumnSpan="99" Grid.Row="5">
-                    <WrapPanel>
-                        <Button Command="{Binding SubmitCommand}"  Margin="70 0 0 0" Content="Submit" FontSize="10" FontWeight="DemiBold" Padding="10" Style="{StaticResource xxx}"/>
-
-                        <Button Command="{Binding CancelCommand}"  Margin="10 0 0 0" Content="Cancel" FontSize="10" FontWeight="DemiBold" Padding="10"/>
-                    </WrapPanel>
-                </Border>
-
-            </Grid>
+        <TextBlock  Text="Edit User:" Padding="10" FontSize="25" FontWeight="Bold" Grid.ColumnSpan="99"/>
+        <Border BorderBrush="Black" BorderThickness="3" Margin="5" CornerRadius="15">
+            <con:UserviewDetailFormVM DataContext="{Binding UserViewerDeatailsFormVM}"/>
         </Border>
     </Grid>
 </UserControl>

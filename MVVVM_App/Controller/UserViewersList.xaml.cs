@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using DropdownMenuControl;
 
 namespace MVVVM_App.Controller
 {
@@ -10,6 +12,7 @@ namespace MVVVM_App.Controller
         public UserViewersList()
         {
             InitializeComponent();
+            
         }
     }
 }

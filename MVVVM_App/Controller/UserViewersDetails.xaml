@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Border BorderBrush="Gray" BorderThickness="1"/>
+        <Border BorderBrush="Gray" BorderThickness="1" Background="AliceBlue"/>
 
         <Grid>
             <Grid.Style>
